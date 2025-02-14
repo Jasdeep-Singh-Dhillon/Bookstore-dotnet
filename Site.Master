@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> </title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -14,7 +14,7 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <link href="/Content/Style.css" rel="stylesheet" />
 </head>
 <body>
     <form runat="server">
@@ -37,9 +37,9 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-light navbar-light justify-content-between">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">Book Store Assignment 1</a>
+                <a class="navbar-brand" runat="server" href="~/">Assignment 2 - Site.Master with Bootstrap</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -48,7 +48,8 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Products">Products</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Cart">Cart</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href=  "~/Cart">Cart</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Login">Login</a></li>
                     </ul>
                 </div>
             </div>

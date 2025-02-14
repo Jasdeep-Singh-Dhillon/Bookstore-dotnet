@@ -37,8 +37,34 @@ namespace Jasdeep_BookStore
             if (CartList.Count == 0)
             {
                 lbxCart.Visible = false;
+                btnRemove.Visible = false;
+                btnClear.Visible = false;
                 lblNoItems.Visible = true;
+                btnCheckOut.Visible = false;
+            } else
+            {
+                lbxCart.Visible = true;
+                btnRemove.Visible = true;
+                btnClear.Visible = true;
+                lblNoItems.Visible = false;
+                btnCheckOut.Visible = true;
             }
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            CartList.Clear();
+            isCartEmpty();
+        }
+
+        protected void btnContinueShop_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Products.aspx");
+        }
+
+        protected void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Checkout.aspx");
         }
     }
 }

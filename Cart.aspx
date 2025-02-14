@@ -2,13 +2,22 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <main
+    <main>
         <div>
-            <asp:Label ID="lblNoItems" runat="server" Text="No Items in Cart" Visible="false"></asp:Label>
+            <h4>
+                <asp:Label ID="lblNoItems" runat="server" Text="No Items in Cart" Visible="false"></asp:Label>
+            </h4>
         </div>
         <div class="flex">
             <asp:ListBox runat="server" ID="lbxCart"></asp:ListBox>
-            <asp:Button runat="server" ID="btnRemove" Text="Remove" OnClick="btnRemove_Click"/>
+            <div class="flex flex-column" id="cartButtons">
+            <asp:Button runat="server" ID="btnRemove" Text="Remove Item" OnClick="btnRemove_Click" CssClass="btn btn-dark"/>
+            <asp:Button runat="server" ID="btnClear" Text="Empty Cart" OnClick="btnClear_Click" CssClass="btn btn-danger"/>
+            </div>
+        </div>
+        <div class="flex ">
+            <asp:Button runat="server" ID="btnCheckOut" Text="Check Out" OnClick="btnCheckOut_Click" CssClass="btn btn-primary"/>
+            <asp:Button runat="server" ID="btnContinueShop" Text="Continue Shopping" OnClick="btnContinueShop_Click" CssClass="btn btn-group"/>
         </div>
     </main>
 

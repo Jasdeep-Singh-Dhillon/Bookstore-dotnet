@@ -21,6 +21,11 @@ namespace Jasdeep_BookStore
                 ddlSelectGenre.DataBind();
                 ddlSelectBook.DataBind();
                 updateBookDetails();
+
+                if (Session["FirstName"] != null && Session["LastName"] != null)
+                {
+                    lblWelcome.Text = "Welcome back, " + Session["FirstName"] + " " + Session["LastName"];
+                }
             }
             CartList = CartList.GetCart();
         }
@@ -49,29 +54,26 @@ namespace Jasdeep_BookStore
 
         protected void addToCart_Click(object sender, EventArgs e)
         {
-            int bookId = int.Parse(ddlSelectBook.SelectedValue);
-            DataView books = (DataView)BookDataSource.Select(DataSourceSelectArguments.Empty);
-            books.RowFilter = "BookID ='" + bookId + "'";
-            DataRowView book = books[0];
-            string title = book["Title"].ToString();
-            string shortDesc = book["ShortDesc"].ToString();
-            string desc = book["Description"].ToString();
-            double price = double.Parse(book["Price"].ToString());
-            string author = book["author"].ToString();
-            int quantity = int.Parse(txtQuantity.Text);
+            if (Page.IsValid)
+            {
+                int bookId = int.Parse(ddlSelectBook.SelectedValue);
+                DataView books = (DataView)BookDataSource.Select(DataSourceSelectArguments.Empty);
+                books.RowFilter = "BookID ='" + bookId + "'";
+                DataRowView book = books[0];
+                string title = book["Title"].ToString();
+                string shortDesc = book["ShortDesc"].ToString();
+                string desc = book["Description"].ToString();
+                double price = double.Parse(book["Price"].ToString());
+                string author = book["author"].ToString();
+                int quantity = int.Parse(txtQuantity.Text);
 
-            Book cartBook = new Book(bookId, title, shortDesc, desc, price, author);
+                Book cartBook = new Book(bookId, title, shortDesc, desc, price, author);
 
-            CartItem cartItem = new CartItem(cartBook, quantity);
+                CartItem cartItem = new CartItem(cartBook, quantity);
 
-            lblBookTitle.Text = cartItem.Display();
-
-            CartList.addToCart(cartItem);
-        }
-
-        protected void goToCart_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Cart.aspx");
+                CartList.addToCart(cartItem);
+                txtQuantity.Text = "";
+            }
         }
     }
 }
